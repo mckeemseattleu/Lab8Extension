@@ -1,30 +1,14 @@
 import java.util.EmptyStackException;
 
+
+
 public class Queue
 {
-    // front of the queue
     private Node head;
-    // rear of the queue . Good name
     private Node tail;
-
-    /**
-     * The Node class is used to implement the doubly linked list.
-     * @author Mike McKee
-     */
     private class Node {
-        /**
-         * Hold element of queue.
-         */
         public String data;
-
-        /**
-         * Points to the previous node in doubly linked list.
-         */
         public Node prev;
-
-        /**
-         * Points to next node in doubly linked list.
-         */
         public Node next;
 
         /**
@@ -71,11 +55,6 @@ public class Queue
         }
     }
 
-    /**
-     * Removes and returns the item at front(head) of queue.
-     * @return item at head of queue (the first thing in)
-     * @throws IllegalArgumentException user tries to dequeue an empty queue
-     */
     public String dequeue() {
         String queueTop;        //holds item at head of queue
 
@@ -196,6 +175,24 @@ public class Queue
         return head == null;
     }
 
+
+    public void reverseQueue()
+    {
+        // Create a new Stack
+        if (this.empty())
+            throw new EmptyStackException();
+
+        Stack newStack = new Stack();
+        String newString;
+        while (!this.empty())
+        {
+            newStack.push(this.dequeue());
+        }
+        while (!newStack.empty())
+        {
+            this.enqueue(newStack.pop());
+        }
+    }
 
     /** * Remove the top elements of the given stack up to, but not including,
 
